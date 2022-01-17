@@ -1,11 +1,17 @@
-import React, {useReducer} from 'react';
+import React, {useReducer, useContext} from 'react';
 import uuid from 'uuid';
 import VoterContext from './voterContext';
 import voterReducer from './voterReducer';
+
 import { GET_VOTERS, VOTER_ERROR } from '../types';
 import axios from 'axios';
 
 const VoterState = props =>{
+
+
+    
+
+    
 
     const initialState = {
 
@@ -14,11 +20,18 @@ const VoterState = props =>{
 
     const [state,dispatch] = useReducer(voterReducer, initialState);
 
-    const getVoters = async () => {
+    const getVoters = async (props) => {
 
+        const data = props;
+
+        const query = `http://139.59.170.27:5000/api/voters?last=${data.lName}&first=${data.fName}`;
+        
+
+        
+        
        
         try {
-           const voters = await axios.get("http://139.59.170.27:5000/api/voters?last=Morgan&first=David");
+           const voters = await axios.get(query);
                 dispatch({
                     type: GET_VOTERS,
                     payload: voters.data

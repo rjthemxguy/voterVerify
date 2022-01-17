@@ -1,20 +1,27 @@
 import React, {Fragment, useContext, useEffect } from 'react'
 import VoterContext from '../../context/voter/voterContext'
 import {AgGridColumn, AgGridReact} from 'ag-grid-react';
-
+import { useLocation } from 'react-router';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { SearchContext } from '../../context/search/searchContext';
 
 
 
 const VoterList = () => {
+  
+const searchContext = useContext(SearchContext);
+
+const {data} = searchContext;
+  
+
 
     const  voterContext = useContext(VoterContext);
 
     const { voters, getVoters } = voterContext;     
 
     useEffect(() => {
-        getVoters();
+        getVoters(data);
         //eslint-disable-next-line
     }, []);
     

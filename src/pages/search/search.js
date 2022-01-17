@@ -1,34 +1,54 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useContext, useState} from 'react';
 import { useNavigate} from "react-router-dom";
+import { SearchContext } from '../../context/search/searchContext';
 
 
 
 
 
-const HandleSubmit = (event) => {
+
+
+
+function Search() {
+
+    
+    const searchContext = useContext(SearchContext);
+
+
+    const {data, setSearchState} = searchContext;
+     
     
 
-    event.preventDefault();
+    
+    let navigate = useNavigate();
+    
+    function GoResults() {
+    alert(lname);    
+    setSearchState({fName:"Robert", lName:"Robinson"});
+    navigate("/results");
+    
+    }
 
-    
-    
-}
 
-function search() {
-    
-    
-    
+    const formData = {
+        lastN:"Test"
+
+    }
+        
+    const [lname] = useState();
+
+
     return (
     <Fragment>
         
         
      
      <div className="container text-left">
-        <form onSubmit = {HandleSubmit}>
+        <form>
 
             <div className="form-group mb-4 mt-4">
                 <label for="VoterLastName">Voter Last Name</label>
-                <input type="text" className="form-control" id="VoterLastName" placeholder="Enter last name"></input>
+                <input type="input" value={lname} className="form-control" id="VoterLastName" placeholder="Enter last name" name="nameOne"></input>
             </div>
 
             <div className="form-group mb-4">
@@ -48,7 +68,7 @@ function search() {
             </div>
   
             <div className="text-center">
-                <button type="submit" className="btn btn-primary text-center">Search for voter</button>
+                <button onClick={GoResults} className="btn btn-primary text-center">Search for voter</button>
             </div>
         </form>
 
@@ -59,4 +79,4 @@ function search() {
     )
 }
 
-export default search;
+export default Search;
