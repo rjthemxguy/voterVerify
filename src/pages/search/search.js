@@ -5,73 +5,62 @@ import { SearchContext } from '../../context/search/searchContext';
 
 
 
-
-
-
-
 function Search() {
 
     
     const searchContext = useContext(SearchContext);
 
-
     const {data, setSearchState} = searchContext;
      
-    
+    const {fName, lName, houseNum, street} = data;
 
-    
+   
     let navigate = useNavigate();
     
-    function GoResults() {
-    alert(lname);    
-    setSearchState({fName:"Robert", lName:"Robinson"});
-    navigate("/results");
-    
+    const onChange = e => setSearchState({...data, [e.target.name]: e.target.value});
+
+    const onSubmit = (e) =>{
+        e.preventDefault();
+        navigate("/results");
     }
-
-
-    const formData = {
-        lastN:"Test"
-
-    }
-        
-    const [lname] = useState();
-
-
-    return (
+   
+  return (
     <Fragment>
         
-        
-     
-     <div className="container text-left">
-        <form>
+     <div className="form-group container pt-4" >
+        <form onSubmit={onSubmit}>
+            <input type="text"
+            class="form-control mt-4"
+            placeholder="Last Name"
+            name="lName"
+            value={lName}
+            onChange = {onChange}/>
 
-            <div className="form-group mb-4 mt-4">
-                <label for="VoterLastName">Voter Last Name</label>
-                <input type="input" value={lname} className="form-control" id="VoterLastName" placeholder="Enter last name" name="nameOne"></input>
-            </div>
+            <input type="text"
+            class="form-control mt-4"
+            placeholder="House Number"
+            name="houseNum"
+            value={houseNum}
+            onChange = {onChange}/>
 
-            <div className="form-group mb-4">
-                <label for="VoterHouseNumber">Voter House Number</label>
-                <input type="text" className="form-control" id="VoterHouseNumber" placeholder="Enter house number"></input>
-            </div>
+            <input type="text"
+            class="form-control mt-4"
+            placeholder="First Name"
+            name="fName"
+            value={fName}
+            onChange = {onChange}/>
 
-            <div className="form-group mb-4">
-                <label for="voterFirstName">Voter First Name</label>
-                <input type="text" className="form-control" id="voterFirstName"  placeholder="Enter first name"></input>
-            </div>
-          
+            <input type="text"
+            class="form-control mt-4"
+            placeholder="Street"
+            name="street"
+            value={street}
+            onChange = {onChange}/>
 
-            <div className="form-group mb-4">
-                <label for="VoterStreetName">Voter Street Name</label>
-                <input type="text" className="form-control" id="VoterStreetName" placeholder="Enter street name"></input>
+            <div>
+                <input type="submit" value="Search" className="btn btn-primary mt-4"/>
             </div>
-  
-            <div className="text-center">
-                <button onClick={GoResults} className="btn btn-primary text-center">Search for voter</button>
-            </div>
-        </form>
-
+        </form>  
       </div>
 
      

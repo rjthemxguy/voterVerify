@@ -5,7 +5,10 @@ export const SearchContext = createContext();
 const SearchState = (props) => {
  
  
-const [data, setSearchState] = useState({});
+const [data, setSearchState] = useState({fName:"",
+                                          lName:"",
+                                          houseNum:"",
+                                          street:""});
  
  
    return(
