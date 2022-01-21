@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import Search from './pages/search/search';
 import Navbar from './pages/navbar/navbar';
@@ -7,6 +7,7 @@ import About from './pages/about/about';
 import VoterState from './context/voter/VoterState';
 import VoterList from './pages/voterList/voterList';
 import SearchState from './context/search/searchContext';
+import { SearchContext } from './context/search/searchContext';
 
 import { useState } from 'react';
 
@@ -20,6 +21,7 @@ function App() {
       
 
       <div>
+
       <VoterState>
          <SearchState>
         <BrowserRouter>
@@ -32,6 +34,7 @@ function App() {
         </BrowserRouter>
        </SearchState>
         </VoterState>
+        
       </div>
         
       

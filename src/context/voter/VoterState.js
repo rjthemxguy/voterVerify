@@ -24,7 +24,9 @@ const VoterState = props =>{
 
         const data = props;
 
-        const query = `http://139.59.170.27:5000/api/voters?last=${data.lName}&first=${data.fName}&house=${data.houseNum}&street=${data.street}`;
+      
+
+        const query = `http://139.59.170.27:5000/api/voters?last=${data.lName}&first=${data.fName}&house=${data.houseNum}&street=${data.street}&city=${data.city}`;
         
         
         

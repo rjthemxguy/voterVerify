@@ -31,15 +31,26 @@ const VoterList = () => {
       setSearchState({fName:"",
       lName:"",
       houseNum:"",
-      street:""});
+      street:"",
+      city:""});
       
-      navigate("/")
+      navigate("/");
     }
-
+const actionButton = (params) => {
+  setSearchState({fName:"",
+  lName:"",
+  city:"",
+  houseNum:params.data.sHouseNum,
+  street:params.data.szStreetName});
+  
+navigate("/");
+  
+}
+  
 
     return (
         <Fragment >
-        <div className="ag-theme-alpine container mt-4 text-left" style={{height: 600, width: 675}}>
+        <div className="ag-theme-alpine container mt-4 text-left" style={{height: 600, width: 825}}>
           
            <AgGridReact
                rowData={voters}
@@ -65,14 +76,28 @@ const VoterList = () => {
                     {
                         headerName: "Street",
                         field: "szStreetName",
-                        width:200
+                        width:150
                         
+                      },
+                      {
+                        headerName: "City",
+                        field: "szSitusCity",
+                        width: 150
+                      },
+                      {
+                      headerName: "",
+                      width:60,
+                      cellRendererFramework:(params) => <div>
+                       <i class="fas fa-house-user"  onClick={() => actionButton(params)}></i> </div>
                       }
                 ]
                }>
                  <AgGridColumn field="szNameLast"></AgGridColumn>
                  <AgGridColumn field="model"></AgGridColumn>
                  <AgGridColumn field="price"></AgGridColumn>
+                 <AgGridColumn field="price2"></AgGridColumn>
+                 
+                 
            </AgGridReact>
            <div className = "text-center mt-4">
            <button onClick={newSearch} className="btn btn-primary">New Search</button>
