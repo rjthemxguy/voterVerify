@@ -6,13 +6,16 @@ const Navbar = ({title}) => {
     return (
         <Fragment>
             
-            <div className="container-fluid bg_navy">
+           
+            
+        
+            <div className="container-fluid bg_navy navContainer fixed-top">
                 <div className="container">
                     <div className="row pt-2 pb-2">
-                        <div className="col-md-6 text-center text-md-left"><h1>{title}</h1></div>
+                        <div className="col-md-6 text-center text-md-left"></div>
                         <div className="col-md-6 text-right">
                             
-                                <Link style={{textDecoration:'none'}} className="mr-4 text-light" to='/'>Home</Link>
+                                
                                 <Link style={{textDecoration:'none'}} className="text-light" to='/about'>About</Link>
                             
 
@@ -20,7 +23,7 @@ const Navbar = ({title}) => {
                     </div>
                 </div>
             </div>
-            
+    
         </Fragment>
     )
 }

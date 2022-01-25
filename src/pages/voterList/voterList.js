@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import { SearchContext } from '../../context/search/searchContext';
+import Fab from '@mui/material/Fab';
 
 
 
@@ -22,6 +23,7 @@ const VoterList = () => {
 
     useEffect(() => {
         getVoters(data);
+        console.log(voters);
         //eslint-disable-next-line
     }, []);
 
@@ -36,26 +38,43 @@ const VoterList = () => {
       
       navigate("/");
     }
-const actionButton = (params) => {
+const actionButton = (voter) => {
   setSearchState({fName:"",
   lName:"",
   city:"",
-  houseNum:params.data.sHouseNum,
-  street:params.data.szStreetName});
+  houseNum:voter.sHouseNum,
+  street:voter.szStreetName});
   
 navigate("/");
   
 }
-  
+
+
+
+const ListTag = () => voters.map(voter => (<div className="fullRow"><div className="leftRow text-left">
+  <span className="navy">{voter.szNameLast} , {voter.szNameFirst}</span>
+<br/><span className="row2 text-left">{voter.sHouseNum} {voter.szStreetName}, {voter.szSitusCity} 
+</span></div><div className="rightRow"><i class="fas fa-house-user"  onClick={() => actionButton(voter)}></i></div>
+</div>
+))
 
     return (
         <Fragment >
-        <div className="ag-theme-alpine container mt-4 text-left" style={{height: 600, width: 825}}>
+
+<div className="text-center">
+<div className="fixed-top mt-4 newSearch" onClick={newSearch}>Click Here for NEW SEARCH</div>
+ </div>        
+       <div className="topMargin"></div>  
+      
+      <ListTag />
+      
+     
+     {/*  <div className="ag-theme-alpine container mt-4 text-left" style={{height: 600, width: 825}}>
           
            <AgGridReact
                rowData={voters}
                columnDefs={
-                [
+                [  
                     {
                       headerName: "Last Name",
                       field: "szNameLast",
@@ -104,7 +123,9 @@ navigate("/");
            </div>
        </div>
 
-            
+              */}    
+
+
         </Fragment>
     )
 }

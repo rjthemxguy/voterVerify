@@ -41,3 +41,54 @@
     transform: rotate(360deg);
   }
 }
+
+.navy {
+  color:navy;
+}
+
+.row2 {
+  font-size:14px;
+  color: black;
+ 
+}
+
+.leftRow {
+  width: 80%;
+  background-color: rgb(205, 209, 207);
+  float: left;
+  height: 60px;
+  margin-top: 10px;
+  padding-left: 15px;
+}
+
+.rightRow {
+  height:60px;
+  background-color: rgb(205, 209, 207);
+  margin-top: 10px;
+  padding-left: 15px;
+  width:20%;
+  padding-top: 15px;
+  float: right;
+}
+
+
+
+.navContainer {
+  position: sticky;
+  top: 0;
+  height: 80px;
+}
+
+.topMargin {
+  margin-top: 80px;
+}
+
+.newSearch{
+  height: 25px;
+  background-color: crimson;
+  color: white;
+  width: 300px;
+  border-radius: 10px;
+  margin-right: auto;
+  margin-left: auto;
+}

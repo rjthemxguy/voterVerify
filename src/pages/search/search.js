@@ -65,7 +65,7 @@ function Search() {
   return (
     <Fragment>
         
-     <div className="form-group container pt-4" >
+     <div className="form-group container pt-4 topMargin" >
         <form onSubmit={onSubmit}>
             <input type="text"
             class="form-control mt-4"
