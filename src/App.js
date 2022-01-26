@@ -8,6 +8,7 @@ import VoterState from './context/voter/VoterState';
 import VoterList from './pages/voterList/voterList';
 import SearchState from './context/search/searchContext';
 import { SearchContext } from './context/search/searchContext';
+import AppState from './context/appContext';
 
 import { useState } from 'react';
 
@@ -21,8 +22,9 @@ function App() {
       
 
       <div>
-
+      <AppState>
       <VoterState>
+       
          <SearchState>
         <BrowserRouter>
          <Navbar/>
@@ -33,7 +35,9 @@ function App() {
           </Routes>
         </BrowserRouter>
        </SearchState>
+       
         </VoterState>
+        </AppState>
         
       </div>
         

@@ -16,7 +16,7 @@ const Navbar = ({title}) => {
                         <div className="col-md-6 text-right">
                             
                                 
-                                <Link style={{textDecoration:'none'}} className="text-light" to='/about'>About</Link>
+                                {/*<Link style={{textDecoration:'none'}} className="text-light" to='/about'>About</Link>*/}
                             
 
                         </div>

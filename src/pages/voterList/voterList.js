@@ -6,12 +6,19 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import { SearchContext } from '../../context/search/searchContext';
 import Fab from '@mui/material/Fab';
+import {AppContext} from '../../context/appContext';
+
 
 
 
 const VoterList = () => {
 
     
+    const appContext = useContext(AppContext);
+    
+    const {appState, setAppState} = appContext;
+
+    const {loading} = appState;
   
     const searchContext = useContext(SearchContext);
 
@@ -21,14 +28,15 @@ const VoterList = () => {
 
     const { voters, getVoters } = voterContext;     
 
-    useEffect(() => {
-        getVoters(data);
-        console.log(voters);
-        //eslint-disable-next-line
-    }, []);
 
     const navigate = useNavigate();
-    
+
+    useEffect(() => {
+        getVoters(data);
+       
+            //eslint-disable-next-line
+    }, []);
+
     function newSearch(){
       setSearchState({fName:"",
       lName:"",
@@ -38,6 +46,10 @@ const VoterList = () => {
       
       navigate("/");
     }
+
+       
+    
+   
 const actionButton = (voter) => {
   setSearchState({fName:"",
   lName:"",
@@ -58,76 +70,55 @@ const ListTag = () => voters.map(voter => (<div className="fullRow"><div classNa
 </div>
 ))
 
+
+if(loading) {
+return(
+  <h1 className="midPageMargin">Loading Voters......</h1>
+)
+
+}
+
+
+
+else {
+
+  if(voters.length === 0) {
+
     return (
-        <Fragment >
+      <Fragment >
 
-<div className="text-center">
-<div className="fixed-top mt-4 newSearch" onClick={newSearch}>Click Here for NEW SEARCH</div>
- </div>        
-       <div className="topMargin"></div>  
+        <div className="text-center">
+          <div className="fixed-top mt-4 newSearch" onClick={newSearch}>Click Here for NEW SEARCH</div>
+        </div>
+
+        <div className="midPageMargin"></div>  
+  
+        <h1>No Results.  Please Search Again.</h1>
+  
+      </Fragment>
+)
+
+  }
+
+  else {
+
+    return (
+          <Fragment >
+
+            <div className="text-center">
+              <div className="fixed-top mt-4 newSearch" onClick={newSearch}>Click Here for NEW SEARCH</div>
+            </div>
+
+            <div className="topMargin"></div>  
       
-      <ListTag />
+            <ListTag />
       
-     
-     {/*  <div className="ag-theme-alpine container mt-4 text-left" style={{height: 600, width: 825}}>
-          
-           <AgGridReact
-               rowData={voters}
-               columnDefs={
-                [  
-                    {
-                      headerName: "Last Name",
-                      field: "szNameLast",
-                      width:165
-                      },
-                    {
-                      headerName: "First Name",
-                      field: "szNameFirst",
-                      width:140
-                    },
-                    {
-                      headerName: "House #",
-                      field: "sHouseNum",
-                      width:140
-                      
-                      
-                    },
-                    {
-                        headerName: "Street",
-                        field: "szStreetName",
-                        width:150
-                        
-                      },
-                      {
-                        headerName: "City",
-                        field: "szSitusCity",
-                        width: 150
-                      },
-                      {
-                      headerName: "",
-                      width:60,
-                      cellRendererFramework:(params) => <div>
-                       <i class="fas fa-house-user"  onClick={() => actionButton(params)}></i> </div>
-                      }
-                ]
-               }>
-                 <AgGridColumn field="szNameLast"></AgGridColumn>
-                 <AgGridColumn field="model"></AgGridColumn>
-                 <AgGridColumn field="price"></AgGridColumn>
-                 <AgGridColumn field="price2"></AgGridColumn>
-                 
-                 
-           </AgGridReact>
-           <div className = "text-center mt-4">
-           <button onClick={newSearch} className="btn btn-primary">New Search</button>
-           </div>
-       </div>
-
-              */}    
-
-
-        </Fragment>
+          </Fragment>
     )
+  }
+}
+
+
 }
 
 export default VoterList
