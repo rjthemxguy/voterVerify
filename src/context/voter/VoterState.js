@@ -26,6 +26,10 @@ const VoterState = props =>{
 
     const {appData, setAppState} = appState;
 
+    const Capitalize = (str) => {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
 
     const getVoters = async (props) => {
 
@@ -33,7 +37,7 @@ const VoterState = props =>{
         const data = props;
 
       
-        const query = `http://139.59.170.27:5000/api/voters?last=${data.lName}&first=${data.fName}&house=${data.houseNum}&street=${data.street}&city=${data.city}`;
+        const query = `http://139.59.170.27:5000/api/voters?last=${Capitalize(data.lName)}&first=${Capitalize(data.fName)}&house=${data.houseNum}&street=${Capitalize(data.street)}&city=${Capitalize(data.city)}`;
         
         
         
