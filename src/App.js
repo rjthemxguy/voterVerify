@@ -6,10 +6,12 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import About from './pages/about/about';
 import VoterState from './context/voter/VoterState';
 import VoterList from './pages/voterList/voterList';
+import Register from './pages/auth/Register';
+import Login from './pages/auth/Login';
 import SearchState from './context/search/searchContext';
 import { SearchContext } from './context/search/searchContext';
 import AppState from './context/appContext';
-
+import AuthState from './context/auth/AuthState';
 import { useState } from 'react';
 
 
@@ -22,6 +24,7 @@ function App() {
       
 
       <div>
+       <AuthState> 
       <AppState>
       <VoterState>
        
@@ -32,13 +35,15 @@ function App() {
             <Route path="/" element={<Search />}></Route>
             <Route path="/about" element={<About />}></Route>
             <Route path="/results" element={<VoterList/>}></Route>
+            <Route path="/register" element={<Register/>}></Route>
+            <Route path="/login" element={<Login/>}></Route>
           </Routes>
         </BrowserRouter>
        </SearchState>
        
         </VoterState>
         </AppState>
-        
+        </AuthState>
       </div>
         
       
