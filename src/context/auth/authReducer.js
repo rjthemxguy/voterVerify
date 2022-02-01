@@ -21,6 +21,7 @@ import {REGISTER_SUCCESS,
             }
 
         case REGISTER_SUCCESS: 
+        case LOGIN_SUCCESS:
 
             localStorage.setItem('token', action.payload.token);
 
@@ -33,6 +34,7 @@ import {REGISTER_SUCCESS,
             }
         case REGISTER_FAIL:
         case AUTH_ERROR:
+        case LOGIN_FAIL:
             console.log(action.payload);
             localStorage.removeItem('token');
 
