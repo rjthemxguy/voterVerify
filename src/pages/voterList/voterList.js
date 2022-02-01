@@ -7,13 +7,20 @@ import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import { SearchContext } from '../../context/search/searchContext';
 import Fab from '@mui/material/Fab';
 import {AppContext} from '../../context/appContext';
+import AuthContext from '../../context/auth/authContext';
 
 
 
 
 const VoterList = () => {
 
+    const authContext = useContext(AuthContext);
     
+    useEffect(() => {
+     authContext.loadUser();
+
+    }, [])
+
     const appContext = useContext(AppContext);
     
     const {appState, setAppState} = appContext;

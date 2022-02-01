@@ -13,7 +13,11 @@ import { SearchContext } from './context/search/searchContext';
 import AppState from './context/appContext';
 import AuthState from './context/auth/AuthState';
 import { useState } from 'react';
+import setAuthToken from './utils/setAuthToken';
 
+if(localStorage.token) {
+  setAuthToken(localStorage.token);
+}
 
 
 function App() {

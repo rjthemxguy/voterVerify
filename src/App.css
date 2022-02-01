@@ -80,7 +80,7 @@
 }
 
 .topMargin {
-  margin-top: 80px;
+  margin-top: 95px;
 }
 
 .midPageMargin {
@@ -101,4 +101,6 @@
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
 }

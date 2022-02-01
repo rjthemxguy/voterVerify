@@ -1,12 +1,19 @@
-import React, {Fragment, useContext, useState} from 'react';
+import React, {Fragment, useContext, useState, useEffect} from 'react';
 import { useNavigate} from "react-router-dom";
 import { SearchContext } from '../../context/search/searchContext';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import AuthContext from '../../context/auth/authContext';
 
 
 function Search() {
+
+    const authContext = useContext(AuthContext);
+
+    useEffect(() => {
+      authContext.loadUser();
+
+    },[]);
 
     const notify = () => toast.error("Please enter some data!", {position: "top-center"});
 
