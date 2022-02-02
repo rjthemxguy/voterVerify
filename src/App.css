@@ -104,3 +104,60 @@
   padding-left: 15px;
   padding-right: 15px;
 }
+
+.iconClass {
+  font-size: 24px;
+  color: cornsilk;
+}
+
+.sidebar {
+  
+  width: 250px;
+  height: 100vh;
+  background-color: darkslategrey;
+  
+  position: fixed;
+  top:80px;
+  left: 0;
+  transition: 850ms;
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+.no-sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: darkslategrey;
+ left: -100%;
+ 
+  position: fixed;
+  top:80px;
+  
+  transition: 850ms;
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+.sideBarItems  > li {
+  color:white;
+ 
+  text-align: left;
+ display: flex;
+  align-items: center;
+  padding: 8px 0px 8px 16px;
+  list-style: none;
+  height: 60px;
+  
+}
+
+.iconItem {
+  margin-right: 10px;
+  color: white;
+}
+
+.closeDiv {
+  text-align: right;
+  width:100%;
+  display: block;
+  
+}
