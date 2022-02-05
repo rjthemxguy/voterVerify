@@ -118,7 +118,11 @@ try {
 
 }
 
+//LOG OUT 
 
+const logout = () => {
+    dispatch({type: LOGOUT});
+}
 
 // CLEAR ERRORS
 
@@ -140,7 +144,8 @@ const clearErrors = () => {dispatch({type:CLEAR_ERRORS})}
             register,
             clearErrors,
             loadUser,
-            login
+            login,
+            logout
 
         }}
         >

@@ -14,6 +14,7 @@ import AppState from './context/appContext';
 import AuthState from './context/auth/AuthState';
 import { useState } from 'react';
 import setAuthToken from './utils/setAuthToken';
+import PrivateRoute from '../src/components/routing/PrivateRoute';
 
 if(localStorage.token) {
   setAuthToken(localStorage.token);
@@ -36,9 +37,13 @@ function App() {
         <BrowserRouter>
          <Navbar/>
           <Routes>
-            <Route path="/" element={<Search />}></Route>
+            <Route path='/' element={<PrivateRoute/>}>            
+              <Route path="/" element={<Search />}/>
+             </Route>
             <Route path="/about" element={<About />}></Route>
-            <Route path="/results" element={<VoterList/>}></Route>
+            <Route path='/results' element={<PrivateRoute/>}>  
+              <Route path="/results" element={<VoterList/>}/>
+            </Route>
             <Route path="/register" element={<Register/>}></Route>
             <Route path="/login" element={<Login/>}></Route>
           </Routes>
