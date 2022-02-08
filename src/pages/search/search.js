@@ -4,16 +4,30 @@ import { SearchContext } from '../../context/search/searchContext';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AuthContext from '../../context/auth/authContext';
+import { AppContext } from '../../context/appContext';
+
 
 
 function Search() {
 
+    let navigate = useNavigate();
+
+    const appContext = useContext(AppContext);
     const authContext = useContext(AuthContext);
+    const {appState, setAppState} = appContext;
+    const {currentUser} = appState;
+   
+    const {user, loading} = authContext;
 
     useEffect(() => {
       authContext.loadUser();
+          
+     
 
     },[]);
+
+
+   
 
     const notify = () => toast.error("Please enter some data!", {position: "top-center"});
 
@@ -23,8 +37,8 @@ function Search() {
      
     const {fName, lName, houseNum, street, city} = data;
 
-   
-    let navigate = useNavigate();
+    
+  
     
    const checkForm = (e) => {
      let isBlank = true;
@@ -56,6 +70,8 @@ function Search() {
 
     const onSubmit = (e) =>{
         e.preventDefault();
+
+    if(user.isActive) {
          
       if(checkForm(e) === true) {
         notify();
@@ -63,6 +79,10 @@ function Search() {
        else {
         navigate("/results");
        }
+
+      }else {
+        navigate("/notActive");
+      }
 
         
         

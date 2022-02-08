@@ -18,6 +18,7 @@ import PrivateRoute from '../src/components/routing/PrivateRoute';
 import ListUsers from './pages/listUsers/ListUsers';
 import UserState from './context/user/UserState';
 import UserDetail from './pages/userDetail/UserDetail';
+import NotActive from '../src/pages/notActtive/notActive';
 
 if(localStorage.token) {
   setAuthToken(localStorage.token);
@@ -46,6 +47,7 @@ function App() {
               <Route path="/" element={<Search />}/>
              </Route>
             <Route path="/about" element={<About />}></Route>
+            <Route path="/notActive" element={<NotActive />}></Route>
             <Route path="/users" element={<ListUsers />}></Route>
             <Route path="/userDetail" element={<UserDetail />}></Route>
             <Route path='/results' element={<PrivateRoute/>}>  
