@@ -43,7 +43,8 @@ const authLinks = (
 <Fragment>
         <li onClick={showSidebar}><FaIcons.FaSearch className="iconItem"/>Search</li>
         <li onClick={showSidebar}><BsIcons.BsPeopleFill className="iconItem"/> Select County</li>
-        <li onClick={showSidebar}><BsIcons.BsFillCheckCircleFill className="iconItem"/> Approve User</li>
+        <li onClick={showSidebar}><BsIcons.BsFillCheckCircleFill className="iconItem"/>
+            <Link style={{textDecoration:'none'}} className="text-light" to='/users'>Approve Users</Link></li>
         <li onClick={onLogout}><BiIcons.BiLogOutCircle className="iconItem"/>Logout</li>
 
 </Fragment>

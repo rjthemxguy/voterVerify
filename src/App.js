@@ -15,9 +15,13 @@ import AuthState from './context/auth/AuthState';
 import { useState } from 'react';
 import setAuthToken from './utils/setAuthToken';
 import PrivateRoute from '../src/components/routing/PrivateRoute';
+import ListUsers from './pages/listUsers/ListUsers';
+import UserState from './context/user/UserState';
+import UserDetail from './pages/userDetail/UserDetail';
 
 if(localStorage.token) {
   setAuthToken(localStorage.token);
+  
 }
 
 
@@ -31,6 +35,7 @@ function App() {
       <div>
        <AuthState> 
       <AppState>
+        <UserState>
       <VoterState>
        
          <SearchState>
@@ -41,6 +46,8 @@ function App() {
               <Route path="/" element={<Search />}/>
              </Route>
             <Route path="/about" element={<About />}></Route>
+            <Route path="/users" element={<ListUsers />}></Route>
+            <Route path="/userDetail" element={<UserDetail />}></Route>
             <Route path='/results' element={<PrivateRoute/>}>  
               <Route path="/results" element={<VoterList/>}/>
             </Route>
@@ -51,6 +58,7 @@ function App() {
        </SearchState>
        
         </VoterState>
+        </UserState>
         </AppState>
         </AuthState>
       </div>

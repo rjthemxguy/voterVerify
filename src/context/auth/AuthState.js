@@ -20,9 +20,9 @@ const AuthState = (props) => {
         isLoading: true,
         error: null,
         user: null,
-        isActive:false,
-        countySB: false,
-        countyRIV: false
+        isActive: false,
+        county: "SB",
+        isAdmin: false
 
     }
 
@@ -64,6 +64,11 @@ const loadUser = async () => {
 // REGISTER USER
 
 const register = async formData => {
+
+    formData.isActive = state.isActive;
+    formData.county = state.county;
+    formData.isAdmin = state.isAdmin;
+
     const config ={
         headers:{
             'Content-Type':'application/json'
@@ -139,8 +144,7 @@ const clearErrors = () => {dispatch({type:CLEAR_ERRORS})}
             error: state.error,
             user: state.user,
             isActive: state.isActive,
-            countySB: state.countySB,
-            countyRIV: state.countyRIV,
+            county: state.county,
             register,
             clearErrors,
             loadUser,

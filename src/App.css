@@ -161,3 +161,25 @@
   display: block;
   
 }
+
+.divRow {
+  width: 95%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left:auto;
+  margin-right:auto;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color:lavender;
+}
+
+.activeClass {
+  font-weight: bold;
+  color: green;
+}
+
+.notActiveClass {
+  font-weight: bold;
+  color: red;
+}

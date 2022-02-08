@@ -6,7 +6,7 @@ export const AppContext = createContext();
 
 const AppState = (props) => {
 
-    const [appState, setAppState] = useState({loading:false});
+    const [appState, setAppState] = useState({loading:false, currentUser: "TEST PERSON" });
 
 
 
