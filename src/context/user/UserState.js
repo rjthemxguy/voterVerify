@@ -16,11 +16,13 @@ const UserState = props =>{
 
     const initialState = {
 
-        users : [{}]
+        users : [{}],
+        isLoading:false
         
     };
 
     const [state,dispatch] = useReducer(userReducer, initialState);
+    const {isLoading} = state;
 
     //const appContext = useContext(AppContext);
     
@@ -35,6 +37,9 @@ const UserState = props =>{
         const query = `http://139.59.170.27:5000/api/users`;
           
         try {
+
+         
+
           const users = await axios.get(query);
           
                 dispatch({
@@ -63,10 +68,10 @@ const UserState = props =>{
            
           const user = await axios.put(`http://139.59.170.27:5000/api/users/${currentUser._id}`, currentUser, config);
           
-            //    dispatch({
-            //        type: UPDATE_USER,
-            //        payload: user.data
-            //    });
+               dispatch({
+                    type: UPDATE_USER,
+                    payload: user.data
+                });
 
         } catch (err) {
             console.log("Error: " + err.message);
@@ -83,7 +88,8 @@ const UserState = props =>{
         <UserContext.Provider value = {{
             users:state.users,
             getUsers,
-            updateUser
+            updateUser, 
+            isLoading
         }}>
             {props.children}
 

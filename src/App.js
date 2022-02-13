@@ -6,6 +6,7 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import About from './pages/about/about';
 import VoterState from './context/voter/VoterState';
 import VoterList from './pages/voterList/voterList';
+import CountyList from './pages/countyList/CountyList';
 import Register from './pages/auth/Register';
 import Login from './pages/auth/Login';
 import SearchState from './context/search/searchContext';
@@ -46,10 +47,18 @@ function App() {
             <Route path='/' element={<PrivateRoute/>}>            
               <Route path="/" element={<Search />}/>
              </Route>
+
             <Route path="/about" element={<About />}></Route>
+
             <Route path="/notActive" element={<NotActive />}></Route>
-            <Route path="/users" element={<ListUsers />}></Route>
+
+            <Route path='/' element={<PrivateRoute/>}>    
+              <Route path="/users" element={<ListUsers />}></Route>
+            </Route>
+            
             <Route path="/userDetail" element={<UserDetail />}></Route>
+
+            <Route path="/countyList" element={<CountyList />}></Route>
             <Route path='/results' element={<PrivateRoute/>}>  
               <Route path="/results" element={<VoterList/>}/>
             </Route>

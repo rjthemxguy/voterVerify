@@ -16,7 +16,7 @@ const backToSearch = () => {
 
             <h2>Please contact your supervisor for activation</h2>
 
-            <button className="btn btn-primary" onClick={() => {backToSearch()}} >Search</button>
+            <button className="btn btn-primary mt-4" onClick={() => {backToSearch()}} >Search</button>
 
         </Fragment>
 

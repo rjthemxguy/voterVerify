@@ -17,8 +17,10 @@ const authContext = useContext(AuthContext);
 
 
 
-const {isAuthenticated, logout} = authContext;
+const {isAuthenticated, logout, user} = authContext;
 
+
+console.log("USER: " + user);
 const [sidebar, toggleSidebar] = useState(false);
 
 const showSidebar = () => toggleSidebar(!sidebar);
@@ -41,8 +43,12 @@ const guestLinks = (
 
 const authLinks = (
 <Fragment>
-        <li onClick={showSidebar}><FaIcons.FaSearch className="iconItem"/>Search</li>
-        <li onClick={showSidebar}><BsIcons.BsPeopleFill className="iconItem"/> Select County</li>
+        <li onClick={showSidebar}><FaIcons.FaSearch className="iconItem"/>
+        <Link style={{textDecoration:'none'}} className="text-light" to='/'>Search</Link></li>
+        <li onClick={showSidebar}><BsIcons.BsPeopleFill className="iconItem"/>
+        <Link style={{textDecoration:'none'}} className="text-light" to='/countyList'>Select County</Link></li>
+
+        
         <li onClick={showSidebar}><BsIcons.BsFillCheckCircleFill className="iconItem"/>
             <Link style={{textDecoration:'none'}} className="text-light" to='/users'>Approve Users</Link></li>
         <li onClick={onLogout}><BiIcons.BiLogOutCircle className="iconItem"/>Logout</li>
